@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'getx_routes /screen_one.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -15,47 +17,18 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Getx App'),
       ),
-      body: Column(
+      body:Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Card(
-            child: ListTile(
-              title: Text('GetX Theme Alert'),
-              onTap: (){
-                Get.bottomSheet(
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          leading: Icon(Icons.light_mode),
-                          title: Text('Light mode'),
-                          onTap: (){
-                            Get.changeTheme(ThemeData.light());
-                          },
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.dark_mode),
-                          title: Text('Dark mode'),
-                          onTap: (){
-                            Get.changeTheme(ThemeData.dark());
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+          Center(
+            child: TextButton(
+              onPressed: (){
+                Get.to(ScreenOne());
               },
+              child: Text('Go to Page 2'),
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-
-        },
       ),
     );
   }
