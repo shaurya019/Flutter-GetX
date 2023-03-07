@@ -19,22 +19,33 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Card(
             child: ListTile(
-              title: Text('GetX Dialog Alert'),
-              subtitle: Text('GetX xxxxxxxxx') ,
+              title: Text('GetX Theme Alert'),
               onTap: (){
-                Get.defaultDialog(
-                  title: 'Delete Chat',
-                    titlePadding: EdgeInsets.only(top: 20),
-                  contentPadding: EdgeInsets.all(20),
-                  middleText: 'Are you sure you want to delete this chat?',
-                  confirm: TextButton(
-                      onPressed: (){
-                        Get.back();
-                      }, child: Text('OK')),
-                  cancel: TextButton(
-                      onPressed: (){
-                        Get.back();
-                      }, child: Text('Cancel')),
+                Get.bottomSheet(
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          leading: Icon(Icons.light_mode),
+                          title: Text('Light mode'),
+                          onTap: (){
+                            Get.changeTheme(ThemeData.light());
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.dark_mode),
+                          title: Text('Dark mode'),
+                          onTap: (){
+                            Get.changeTheme(ThemeData.dark());
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             ),
