@@ -4,14 +4,14 @@ import 'package:get/get.dart';
 import '../home_screen.dart';
 
 
-class ScreenOne extends StatefulWidget {
-  const ScreenOne({Key? key}) : super(key: key);
+class ScreenTwo extends StatefulWidget {
+  const ScreenTwo({Key? key}) : super(key: key);
 
   @override
-  State<ScreenOne> createState() => _ScreenOneState();
+  State<ScreenTwo> createState() => _ScreenTwoState();
 }
 
-class _ScreenOneState extends State<ScreenOne> {
+class _ScreenTwoState extends State<ScreenTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

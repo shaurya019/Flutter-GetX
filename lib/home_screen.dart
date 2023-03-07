@@ -23,9 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
           Center(
             child: TextButton(
               onPressed: (){
-                Get.to(ScreenOne());
+                Get.to(ScreenOne(name: ' Shaurya',));
               },
-              child: Text('Go to Page 2'),
+              child: Text('Go to Screen 1'),
             ),
           ),
         ],
