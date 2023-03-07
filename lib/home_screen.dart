@@ -17,17 +17,33 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-
+          Card(
+            child: ListTile(
+              title: Text('GetX Dialog Alert'),
+              subtitle: Text('GetX xxxxxxxxx') ,
+              onTap: (){
+                Get.defaultDialog(
+                  title: 'Delete Chat',
+                    titlePadding: EdgeInsets.only(top: 20),
+                  contentPadding: EdgeInsets.all(20),
+                  middleText: 'Are you sure you want to delete this chat?',
+                  confirm: TextButton(
+                      onPressed: (){
+                        Get.back();
+                      }, child: Text('OK')),
+                  cancel: TextButton(
+                      onPressed: (){
+                        Get.back();
+                      }, child: Text('Cancel')),
+                );
+              },
+            ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-       Get.snackbar(
-           'Shaurya','Subscribe',
-       icon: Icon(Icons.add),
-       backgroundColor: Colors.blueAccent,
-       snackPosition: SnackPosition.TOP,
-       );
+
         },
       ),
     );
