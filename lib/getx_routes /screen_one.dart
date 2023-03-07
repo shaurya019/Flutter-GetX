@@ -24,7 +24,8 @@ class _ScreenOneState extends State<ScreenOne> {
           Center(
             child: TextButton(
               onPressed: (){
-                Get.to(HomeScreen());
+                // Get.to(HomeScreen());
+                Get.back();
               },
               child: Text('Go to Page 1'),
             ),
