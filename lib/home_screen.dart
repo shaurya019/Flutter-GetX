@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'controllers /counter_example.dart';
+import 'controllers /example_two_controller.dart';
 import 'getx_routes /screen_one.dart';
-import 'state_management_example /counter_screen.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-final CounterController controller = Get.put(CounterController());
+final ExampleTwo exampleTwo = Get.put(ExampleTwo());
   @override
   void initState(){
     super.initState();
@@ -23,13 +25,24 @@ final CounterController controller = Get.put(CounterController());
       appBar: AppBar(
         title: Text('Getx App'),
       ),
-      body:Center(
-        child: Obx(()=>Text(controller.counter.toString(),style: TextStyle(fontSize: 60),)),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          controller.increment();
-        },
+      body:Column(
+        children: [
+          Obx(() =>
+            Container(
+              height: 200,
+              width: 200,
+              color: Colors.blueAccent.withOpacity(exampleTwo.opacity.value),
+            ),
+          ),
+          Obx(() =>
+              Slider(
+               value: exampleTwo.opacity.value,
+                  onChanged: (value){
+                    exampleTwo.setOpacity(value);
+                  },
+              ),
+          ),
+        ],
       ),
     );
   }
