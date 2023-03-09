@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'controllers /counter_example.dart';
 import 'controllers /example_two_controller.dart';
 import 'controllers /favourite_controller.dart';
+import 'controllers /login.dart';
 import 'controllers /notification.dart';
 
 
@@ -21,30 +22,46 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget build(BuildContext context) {
-    FavController favController = Get.put(FavController());
+    final controller = Get.put(LoginController());
     return Scaffold(
       appBar: AppBar(
         title: Text('Getx App'),
       ),
-      body:ListView.builder(
-          itemCount: favController.arr.length,
-          itemBuilder: (context,index){
-            return Card(
-              child: ListTile(
-                onTap: (){
-                  if(favController.temp.contains(favController.arr[index].toString())){
-                    favController.removeFav(favController.arr[index].toString());
-                  }else{
-                    favController.addFav(favController.arr[index].toString());
-                  }
-                },
-                title: Text(favController.arr[index].toString()),
-                trailing:Obx( ()=>Icon(Icons.favorite,
-                  color: favController.temp.contains(favController.arr[index].toString()) ? Colors.red : Colors.white,
-                ) )
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              TextFormField(
+                controller: controller.emailController.value,
+                decoration: InputDecoration(
+                    hintText: 'Email'
+                ),
               ),
-            );
-          })
+              TextFormField(
+                controller: controller.password.value,
+                obscureText: true,
+                decoration: InputDecoration(
+                    hintText: 'Password'
+                ),
+              ),
+              SizedBox(height: 40,),
+              Obx(() => InkWell(
+                onTap: (){
+                  controller.loginApi();
+                },
+                child: controller.loading.value ? Center(child: CircularProgressIndicator()) :  Container(
+                  height: 45,
+                  color: Colors.green,
+                  child: Center(child: Text('Login')),
+                ),
+              ))
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
